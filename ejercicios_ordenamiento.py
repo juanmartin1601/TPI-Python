@@ -115,12 +115,19 @@ inventario_jugador_extendido = [
 # Algoritmo de ordenamiento burbuja (Bubble Sort)
 # Este algoritmo ordena una lista de elementos comparando pares adyacentes
 def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n - i - 1):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
-    return arr
+        # Obtiene la longitud de la lista
+        n = len(arr)
+        # Itera sobre cada elemento de la lista
+        for i in range(n):
+            # Itera sobre los elementos restantes que no están ordenados
+            for j in range(0, n - i - 1):
+                # Compara el elemento actual con el siguiente       
+                if arr[j] > arr[j + 1]:
+                    # Intercambia los elementos si están en el orden incorrecto
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        # Devuelve la lista ordenada
+        return arr
+    
 
 
 
@@ -210,6 +217,107 @@ print(f"El tiempo total de ejecución fue: {eficiencia:.10f} segundos")
 inicio = time.time()
 bubble_sort_por_nombre(inventario_jugador_extendido)
 mostrar_inventario(inventario_jugador_extendido, "ORDENADO POR NOMBRE")
+fin = time.time()
+eficiencia = fin - inicio
+# se usa formateador de coma flotante a 10 digitos, para facilitar lectura
+print(f"El tiempo total de ejecución fue: {eficiencia:.10f} segundos")
+
+# Algoritmo de ordenamiento por selección (Selection Sort)
+# Funcion para ordenar el inventario por cantidad de recursos usando el algoritmo de seleccion
+# Recibe como parametro una lista de diccionarios
+# Devuelve la lista ordenanda por el campo "nombre"
+def selection_sort_por_nombre(inventario):
+    # Obtiene los elementos del inventario
+    n = len(inventario)
+    # Itera sobre cada elemento
+    for i in range(n):
+        # Inicializa el indice del menor elemento como el actual
+        min_idx = i
+        # Itera sobre los elementos restantes para ecncontrar el menor
+        for j in range(i, n):
+            # Comparamos los valores de 'cantidad'
+            if inventario[j]["nombre"] < inventario[min_idx]["nombre"]:
+                # Actualiza el indice del menor elemento encontrado
+                min_idx = j
+        # Intercambia el elemento actual con el menor encontrado (sin usar variable temporal)
+        inventario[i], inventario[min_idx] =  inventario[min_idx], inventario[i]
+    # Devuelve el inventario ordenado
+    return inventario
+
+# Función para mostrar el inventario en la consola
+# Recibe como parámetros la lista de inventario y un estado descriptivo
+# No devuelve valores, solo imprime el inventario
+def mostrar_inventario(inventario, estado):
+    # Imprime el encabezado con el estado del inventario
+    print(f"\n--- INVENTARIO ({estado}) ---")
+    # Itera sobre cada elemento del inventario
+    for item in inventario:
+        # Imprime la cantidad y el nombre de cada elemento
+        print(f"{item['nombre']}: {item['cantidad']} unidades")
+
+inicio = time.time()
+#mostrar_inventario(inventario_jugador_compacto, "DESORDENADO")
+selection_sort_por_nombre(inventario_jugador_compacto)
+mostrar_inventario(inventario_jugador_compacto, "ORDENADO")
+fin = time.time()
+eficiencia = fin - inicio
+# se usa formateador de coma flotante a 10 digitos, para facilitar lectura
+print(f"El tiempo total de ejecución fue: {eficiencia:.10f} segundos")
+
+inicio = time.time()
+#mostrar_inventario(inventario_jugador_extendido, "DESORDENADO")
+selection_sort_por_nombre(inventario_jugador_extendido)
+mostrar_inventario(inventario_jugador_extendido, "ORDENADO")
+fin = time.time()
+eficiencia = fin - inicio
+# se usa formateador de coma flotante a 10 digitos, para facilitar lectura
+print(f"El tiempo total de ejecución fue: {eficiencia:.10f} segundos")
+
+# Funcion para ordenar el inventario por cantidad de recursos usando el algoritmo de seleccion
+# Recibe como parametro una lista de diccionarios
+# Devuelve la lista ordenanda por el campo "cantidad"
+def selection_sort_por_cantidad(inventario):
+    # Obtiene los elementos del inventario
+    n = len(inventario)
+    # Itera sobre cada elemento
+    for i in range(n):
+        # Inicializa el indice del menor elemento como el actual
+        min_idx = i
+        # Itera sobre los elementos restantes para ecncontrar el menor
+        for j in range(i, n):
+            # Comparamos los valores de 'cantidad'
+            if inventario[j]["cantidad"] < inventario[min_idx]["cantidad"]:
+                # Actualiza el indice del menor elemento encontrado
+                min_idx = j
+        # Intercambia el elemento actual con el menor encontrado (sin usar variable temporal)
+        inventario[i], inventario[min_idx] =  inventario[min_idx], inventario[i]
+    # Devuelve el inventario ordenado
+    return inventario
+
+# Función para mostrar el inventario en la consola
+# Recibe como parámetros la lista de inventario y un estado descriptivo
+# No devuelve valores, solo imprime el inventario
+def mostrar_inventario(inventario, estado):
+    # Imprime el encabezado con el estado del inventario
+    print(f"\n--- INVENTARIO ({estado}) ---")
+    # Itera sobre cada elemento del inventario
+    for item in inventario:
+        # Imprime la cantidad y el nombre de cada elemento
+        print(f"{item['cantidad']} unidades: {item['nombre']}")
+
+inicio = time.time()
+#mostrar_inventario(inventario_jugador_compacto, "DESORDENADO")
+selection_sort_por_cantidad(inventario_jugador_compacto)
+mostrar_inventario(inventario_jugador_compacto, "ORDENADO")
+fin = time.time()
+eficiencia = fin - inicio
+# se usa formateador de coma flotante a 10 digitos, para facilitar lectura
+print(f"El tiempo total de ejecución fue: {eficiencia:.10f} segundos")
+
+inicio = time.time()
+#mostrar_inventario(inventario_jugador_extendido, "DESORDENADO")
+selection_sort_por_cantidad(inventario_jugador_extendido)
+mostrar_inventario(inventario_jugador_extendido, "ORDENADO")
 fin = time.time()
 eficiencia = fin - inicio
 # se usa formateador de coma flotante a 10 digitos, para facilitar lectura
