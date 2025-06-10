@@ -53,7 +53,7 @@ Imprime el inventario en la consola con un encabezado descriptivo.
 
 Para ejecutar el proyecto, simplemente corre el archivo `ejercicios_ordenamiento.py`. El programa mostrará los inventarios ordenados por cantidad y por nombre, junto con el tiempo de ejecución de cada algoritmo.
 
-### Enlace al video (youtube lo da de baja)
+### Enlace al video y pdf (youtube lo da de baja)
 https://drive.google.com/drive/u/2/folders/1OtciM6lq4jq6xyaHTj4lLI9r3HdyzVti
 
 ## Ejemplo de Salida
